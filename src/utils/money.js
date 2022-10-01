@@ -20,6 +20,12 @@ export const LIST_SYMBOLS_OWNER = [
     "FX_IDC:USDNZD",
     "FX_IDC:USDINR",
 
+    "FX:EURAUD",
+    "FX:EURCAD",
+    "FX:EURCHF",
+    "FX:EURJPY",
+    "FX:EURGBP",
+
 
 
 ]
