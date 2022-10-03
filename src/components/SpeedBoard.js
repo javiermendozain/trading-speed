@@ -1,21 +1,26 @@
-import { useCallback } from "react";
-import Icon from '@mui/material/Icon';
-
-import { LIST_SYMBOLS_OWNER } from "../utils";
+import { useCallback, useContext } from "react";
+import { FAVORITE, LIST_SYMBOLS_OWNER } from "../utils";
 import { ChartMoneySpeed } from "./";
+import { TradingContext } from "./TradingContext";
 
 
+export const SpeedBoard = () => {
+    const {state} = useContext(TradingContext)
 
-export const SpeedBoard = ({ moneySelected }) => {
+    const moneys = useCallback(() => {
+        if (state.moneySelected == FAVORITE ) {
+            return state.favories;
+        }
+        return LIST_SYMBOLS_OWNER.filter(sym => sym != FAVORITE).filter(sym => sym.includes(state.moneySelected))
+    }
+        , [state.moneySelected, state.favories])
 
-    const moneys = useCallback(() =>
-        LIST_SYMBOLS_OWNER.filter(sym => sym.includes(moneySelected))
-        , [moneySelected])
+    console.log(moneys(), { moneySelected: state.moneySelected });
 
     return <div style={{ display: "flex" }}>
         {moneys().map(symbol =>
             <div key={symbol} style={{ margin: "0px 8px", borderLeft: "1.8px solid black" }}  >
-                <Icon>start</Icon>
+
                 <ChartMoneySpeed symbol={symbol} />
             </div>
 

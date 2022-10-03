@@ -1,10 +1,10 @@
 
 export const INTERVALS = [1,5,15]
+export const  FAVORITE = "Favoritos"
 
 export const LIST_MONEYS = [
-    "USD", "EUR" , "CAD", "NZD", "AUD", "JPY", "GBP", "CHF"
+    FAVORITE,  "USD", "EUR" , "CAD", "NZD", "AUD", "JPY", "GBP", "CHF"
 ]
-
 
 
 const LIST_SYMBOLS = LIST_MONEYS.map(mainMoney=>

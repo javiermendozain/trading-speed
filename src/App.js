@@ -1,16 +1,30 @@
 import { useState } from "react";
+import useLocalStorage from "use-local-storage";
 import { SpeedBoard, SelectMoney } from "./components";
+import { TradingContext } from "./components/TradingContext";
 import { LIST_MONEYS } from "./utils";
 
 
+const initState = {
+    moneySelected: LIST_MONEYS[0],
+    favories: []
+}
+
+
 const App = () => {
-    const [moneySelected, setMoneySelected] = useState(LIST_MONEYS[0]);
+    const [state, dispatch] = useState(initState);
+    
 
-    const handleOnChangeMoney = (money) => setMoneySelected(money);
+    const [db, setDb] = useLocalStorage("favories", []);
 
+    const setState = (state)=>dispatch(prev=>({...prev, ...state }))
+
+    console.log({state});
     return <>
-        <SelectMoney onClick={handleOnChangeMoney} moneySelected={moneySelected} />
-        <SpeedBoard moneySelected={moneySelected} />
+        <TradingContext.Provider value={{ state, setState }} >
+            <SelectMoney   />
+            <SpeedBoard  />
+        </TradingContext.Provider>
     </>
 
 }
