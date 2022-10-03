@@ -23,16 +23,16 @@ jobs:
           # Also, check the npm version
           npm -v 
           ls
-          sh -c " 🔄Installing NPM"
+          #sh -c " 🔄Installing NPM"
           npm install
 
-          sh -c "🔄🎯Building"
+          #sh -c "🔄🎯Building"
           npm run build --if-present #:"$SERVER"
 
-          sh -c "🔄Installing firebase"
+          #sh -c "🔄Installing firebase"
           npm install -g firebase-tools
 
-          sh -c "✅Deply to $SERVER"
+          #sh -c "✅Deply to $SERVER"
           firebase deploy -P production --token "${{ secrets.TOKEN }}"
         shell: bash
        # with:
