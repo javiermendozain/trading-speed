@@ -8,11 +8,14 @@ jobs:
     name: Build and deploy
     runs-on: ubuntu-latest
     environment: production
+    
     steps:
       - uses: actions/checkout@v1
-      - uses: ./action-a
+      - name: Run build script
+        run: ./entrypoint.sh
+        shell: bash
         with:
-          MY_NAME: "JAVIER"
+          TOKEN: ${{ secrets.TOKEN }}
         env:
           SERVER: production
           TOKEN: ${{ secrets.TOKEN }}
