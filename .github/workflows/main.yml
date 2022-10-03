@@ -40,3 +40,4 @@ jobs:
         env:
           SERVER: production
           TOKEN: ${{ secrets.TOKEN }}
+          CI: false
