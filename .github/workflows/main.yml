@@ -14,8 +14,8 @@ jobs:
       - name: Run build script
         run: ./entrypoint.sh
         shell: bash
-        with:
-          TOKEN: ${{ secrets.TOKEN }}
+       # with:
+        #  TOKEN: ${{ secrets.TOKEN }}
         env:
           SERVER: production
           TOKEN: ${{ secrets.TOKEN }}
